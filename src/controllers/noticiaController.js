@@ -16,10 +16,10 @@ router.get('/', Authenticate, async(req, res) => {
     
 });
 
-router.get('/:id', Authenticate, async(req, res) => {
+router.get('/:idNoticia', Authenticate, async(req, res) => {
     try{
-    const personajeElegido = await personaje.getpersonajeById(req.params.id);
-    return res.status(200).json(personajeElegido);
+        const noticiaId = await noticia.getnoticiaById(req.params.idNoticia);
+        return res.status(200).json(noticiaId);
     }catch(error){
         console.log(error)
         return res.status(500).json(error);
@@ -28,17 +28,17 @@ router.get('/:id', Authenticate, async(req, res) => {
 
 router.post('', Authenticate, async(req, res) => {
     try{
-    const personajeCreado = await personaje.createpersonaje(req.body);
-    return res.status(201).json(personajeCreado);
+    const noticiaCreada = await noticia.createnoticia(req.body);
+    return res.status(201).json(noticiaCreada);
     }catch(error){
         console.log(error)
         return res.status(500).json(error);
     }
 });
 
-router.put('/:id',Authenticate, async(req, res) => {
+router.put('/:idNoticia',Authenticate, async(req, res) => {
     try{
-    const personajeEditado = await personaje.updatepersonajeById(req.params.id, req.body);
+    const personajeEditado = await personaje.updatepersonajeById(req.params.idNoticia, req.body);
     return res.status(200).json(personajeEditado);
     }catch(error){
         console.log(error)
@@ -46,10 +46,10 @@ router.put('/:id',Authenticate, async(req, res) => {
     }
 });
 
-router.delete('/:id',Authenticate, async(req, res) => {
+router.delete('/:idNoticia',Authenticate, async(req, res) => {
     try{
-    const personajeEliminado = await personaje.deletepersonajeById(req.params.id);
-    return res.status(200).json(personajeEliminado);
+    const noticiaEliminada = await noticia.deletenoticiaById(req.params.idNoticia);
+    return res.status(200).json(noticiaEliminada);
     }catch(error){
         console.log(error)
         return res.status(500).json(error);
