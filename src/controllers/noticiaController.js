@@ -38,8 +38,8 @@ router.post('', Authenticate, async(req, res) => {
 
 router.put('/:idNoticia',Authenticate, async(req, res) => {
     try{
-    const personajeEditado = await personaje.updatepersonajeById(req.params.idNoticia, req.body);
-    return res.status(200).json(personajeEditado);
+    const noticiaEditada = await noticia.updatenoticiaById(req.params.idNoticia, req.body);
+    return res.status(200).json(noticiaEditada);
     }catch(error){
         console.log(error)
         return res.status(500).json(error);

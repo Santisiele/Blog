@@ -29,16 +29,16 @@ export class noticiaService {
 
     createnoticia = async(noticia) => {
         const query = `INSERT INTO ${tablaNotcia}(titulo, copete, cuerpo, epigrafe, imagen) VALUES (@titulo, @copete, @cuerpo, @epigrafe, @imagen)`
-        const response = await dbHelperAll(undefined, noticia, query);
+        const response = await dbHelperAll(noticia, query);
 
         return response.recordset;
     }
 
-    updatenoticiaById = async(id, noticia) => {
-        console.log('Update by ID');
-        const query = `UPDATE ${tablaPersonaje} SET imagen = @imagen, nombre = @nombre, edad = @edad, peso = @peso, historia = @historia, comidaFavorita = @comidaFavorita WHERE id = @Id`
-        const response = await dbHelperAll(id, personaje, query);
-
+    updatenoticiaById = async(idNoticia, noticia) => {
+        const query = `UPDATE ${tablaNotcia} SET titulo=@titulo ,copete=@copete,cuerpo=@cuerpo, epigrafe=@epigrafe, imagen=@imagen WHERE idNoticia = @idNoticia`
+        const response = await dbHelperAll({idNoticia, noticia}, query);
+        console.log(noticia)
+        console.log(query)
         return response.recordset;
     }
 
