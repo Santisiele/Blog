@@ -5,7 +5,7 @@ const tablaNotcia=process.env.DB_TABLA_noticia;
 const tablaEquipo=process.env.DB_TABLA_equipo;
 const tablaInter=process.env.DB_TABLA_intermedia;
 
-export class moviesServices {
+export class equipoServices {
     getMovies = async(titulo, orden) => {
         console.log('Get all');
         let response = 0;
